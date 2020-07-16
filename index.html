@@ -73,6 +73,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo-使用本地图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" class="article-date">
+  <time datetime="2020-07-16T02:25:38.000Z" itemprop="datePublished">2020-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">hexo-使用本地图片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的第一篇博文<a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" title="hexo-尝试使用（初始化、部署篇）">hexo-尝试使用（初始化、部署篇）</a>是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考<a href="https://blog.csdn.net/xia296/article/details/85246761" target="_blank" rel="noopener">【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法</a>。但为了学习hexo，本文使用图片放到本站的方法。</p>
+<hr>
+<h1 id="官方方案-参考Hexo-资源文件夹"><a href="#官方方案-参考Hexo-资源文件夹" class="headerlink" title="官方方案 参考Hexo-资源文件夹"></a>官方方案 参考<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">Hexo-资源文件夹</a></h1><h2 id="一-最简单的实现"><a href="#一-最简单的实现" class="headerlink" title="一. 最简单的实现"></a>一. 最简单的实现</h2><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code> 的方法访问它们。</p>
+<h2 id="二-想要有规律的使用静态资源"><a href="#二-想要有规律的使用静态资源" class="headerlink" title="二. 想要有规律的使用静态资源"></a>二. 想要有规律的使用静态资源</h2><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"><span class="function">post_asset_folder: <span class="title">true</span></span></span><br></pre></td></tr></table></figure>
+<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。</p>
+<h2 id="三-相对路径引用"><a href="#三-相对路径引用" class="headerlink" title="三. 相对路径引用"></a>三. 相对路径引用</h2><p>当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 <img src="/example.jpg" alt=""> ，它将 不会 出现在首页上。（但是它会在文章中按你期待的方式工作）</p>
+<p>正确的引用图片方式是使用下列的<a href="https://hexo.io/zh-cn/docs/tag-plugins" target="_blank" rel="noopener">标签插件</a>而不是 markdown ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-注意："><a href="#四-注意：" class="headerlink" title="四. 注意："></a>四. 注意：</h2><p><em>1. 本地调试时，添加完新图片时，可能需要先执行下hexo generate。才能在/public目录下生成图片</em></p>
+<hr>
+<h1 id="我的方案"><a href="#我的方案" class="headerlink" title="我的方案"></a>我的方案</h1><p>结合上面的第二种方案 + 图片绝对路径。<br><br>当执行hexo generate时，命令行中会把新添加的图片处理后的绝对路径展示出来，如下面的<code>INFO  Generated: 2020/07/08/hexo-写文章-写作篇/01.webp</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INFO  <span class="built_in">Start</span> processing</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> <span class="number">174</span> ms</span><br><span class="line">INFO  Generated: <span class="number">2020</span>/<span class="number">07</span>/<span class="number">08</span>/hexo-写文章-写作篇/<span class="number">01</span>.webp</span><br><span class="line">INFO  <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">116</span> ms</span><br></pre></td></tr></table></figure>
+<p>在md中用<code>![创建新页面](/2020/07/08/hexo-写文章-写作篇/01.webp)</code> 这种md语法来引入。就能在文章详情页和首页都能看到图片了。<em>图片路径记得 <code>/</code> 开头</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo-命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" class="article-date">
@@ -105,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" data-id="ckco638z50000jwnidk1k583t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" data-id="ckcofqlhq00051wnic8keefzc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -144,14 +195,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>框架搭建完成了。接下来开始在hexo个人博客中写第一篇文章</p>
-<h1 id="2-创建新页面"><a href="#2-创建新页面" class="headerlink" title="2. 创建新页面"></a>2. 创建新页面</h1><p><code>hexo new &lt;title&gt;</code> &lt;title&gt; 改为文章标题<br><img src="https://upload-images.jianshu.io/upload_images/17173792-3538cf9c03c4fabe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建新页面"></p>
+<h1 id="2-创建新页面"><a href="#2-创建新页面" class="headerlink" title="2. 创建新页面"></a>2. 创建新页面</h1><p><code>hexo new &lt;title&gt;</code> &lt;title&gt; 改为文章标题<br><img src="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/01.webp" alt="创建新页面"></p>
 <p>可以看到 <em>/source/_posts/</em> 目录下多了一个对应标题的md文件。在这个文件中就可以使用markdown语法进行编写了。</p>
-<h1 id="3-将新页面更新到仓库"><a href="#3-将新页面更新到仓库" class="headerlink" title="3. 将新页面更新到仓库"></a>3. 将新页面更新到仓库</h1><p>执行 <code>hexo d -g</code> 往远程仓库更新一下博客站点<br>执行完毕后，刷新博客站点，可以看到新的文章出现了。<br><img src="https://upload-images.jianshu.io/upload_images/17173792-4df3854b3ee5eaee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更新文章到博客站点"></p>
+<h1 id="3-将新页面更新到仓库"><a href="#3-将新页面更新到仓库" class="headerlink" title="3. 将新页面更新到仓库"></a>3. 将新页面更新到仓库</h1><p>执行 <code>hexo d -g</code> 往远程仓库更新一下博客站点<br>执行完毕后，刷新博客站点，可以看到新的文章出现了。<br><img src="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/02.webp" alt="更新文章到博客站点"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/" data-id="ckcdd4aqq00004kni872qbmri" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/" data-id="ckcofqlhj00011wni9ecse6mc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -225,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" data-id="ckcd5x8sd00007cnidwrtg5o3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" data-id="ckcofqlhs00061wni0p53473r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -276,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hello-world/" data-id="ckcd2higr0000ugni9w0r4yrm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/07/08/hello-world/" data-id="ckcofqlhc00001wnic2x5088a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,6 +387,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">hexo-使用本地图片</a>
+          </li>
         
           <li>
             <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/">hexo-命令</a>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hexo-使用本地图片 | Jarod-Xie的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。  官方方案 参考Hexo-资源文件夹一. 最简单的实现资源（As">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo-使用本地图片">
+<meta property="og:url" content="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/index.html">
+<meta property="og:site_name" content="Jarod-Xie的博客">
+<meta property="og:description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。  官方方案 参考Hexo-资源文件夹一. 最简单的实现资源（As">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/example.jpg">
+<meta property="article:published_time" content="2020-07-16T02:25:38.000Z">
+<meta property="article:modified_time" content="2020-07-16T06:50:39.996Z">
+<meta property="article:author" content="Jarod Xie">
+<meta property="article:tag" content="程序">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="男">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/example.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jarod-Xie的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jarod-Xie的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">随便写写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo-使用本地图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" class="article-date">
+  <time datetime="2020-07-16T02:25:38.000Z" itemprop="datePublished">2020-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo-使用本地图片
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的第一篇博文<a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" title="hexo-尝试使用（初始化、部署篇）">hexo-尝试使用（初始化、部署篇）</a>是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考<a href="https://blog.csdn.net/xia296/article/details/85246761" target="_blank" rel="noopener">【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法</a>。但为了学习hexo，本文使用图片放到本站的方法。</p>
+<hr>
+<h1 id="官方方案-参考Hexo-资源文件夹"><a href="#官方方案-参考Hexo-资源文件夹" class="headerlink" title="官方方案 参考Hexo-资源文件夹"></a>官方方案 参考<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">Hexo-资源文件夹</a></h1><h2 id="一-最简单的实现"><a href="#一-最简单的实现" class="headerlink" title="一. 最简单的实现"></a>一. 最简单的实现</h2><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code> 的方法访问它们。</p>
+<h2 id="二-想要有规律的使用静态资源"><a href="#二-想要有规律的使用静态资源" class="headerlink" title="二. 想要有规律的使用静态资源"></a>二. 想要有规律的使用静态资源</h2><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"><span class="function">post_asset_folder: <span class="title">true</span></span></span><br></pre></td></tr></table></figure>
+<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。</p>
+<h2 id="三-相对路径引用"><a href="#三-相对路径引用" class="headerlink" title="三. 相对路径引用"></a>三. 相对路径引用</h2><p>当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 <img src="/example.jpg" alt=""> ，它将 不会 出现在首页上。（但是它会在文章中按你期待的方式工作）</p>
+<p>正确的引用图片方式是使用下列的<a href="https://hexo.io/zh-cn/docs/tag-plugins" target="_blank" rel="noopener">标签插件</a>而不是 markdown ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-注意："><a href="#四-注意：" class="headerlink" title="四. 注意："></a>四. 注意：</h2><p><em>1. 本地调试时，添加完新图片时，可能需要先执行下hexo generate。才能在/public目录下生成图片</em></p>
+<hr>
+<h1 id="我的方案"><a href="#我的方案" class="headerlink" title="我的方案"></a>我的方案</h1><p>结合上面的第二种方案 + 图片绝对路径。<br><br>当执行hexo generate时，命令行中会把新添加的图片处理后的绝对路径展示出来，如下面的<code>INFO  Generated: 2020/07/08/hexo-写文章-写作篇/01.webp</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INFO  <span class="built_in">Start</span> processing</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> <span class="number">174</span> ms</span><br><span class="line">INFO  Generated: <span class="number">2020</span>/<span class="number">07</span>/<span class="number">08</span>/hexo-写文章-写作篇/<span class="number">01</span>.webp</span><br><span class="line">INFO  <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">116</span> ms</span><br></pre></td></tr></table></figure>
+<p>在md中用<code>![创建新页面](/2020/07/08/hexo-写文章-写作篇/01.webp)</code> 这种md语法来引入。就能在文章详情页和首页都能看到图片了。<em>图片路径记得 <code>/</code> 开头</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo-命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">hexo-使用本地图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/">hexo-命令</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/">hexo-写文章(写作篇)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/">hexo-尝试使用（初始化、部署篇）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jarod Xie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
