@@ -73,6 +73,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo-命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-07-16T02:08:52.000Z" itemprop="datePublished">2020-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/">hexo-命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="hexo-使用到的命令整理"><a href="#hexo-使用到的命令整理" class="headerlink" title="hexo 使用到的命令整理"></a>hexo 使用到的命令整理</h1><h2 id="npm-命令整理"><a href="#npm-命令整理" class="headerlink" title="npm 命令整理"></a>npm 命令整理</h2><p><code>npm install hexo-cli -g</code> 安装/更新 hexo<br><code>npm i</code> 创建完项目后安装依赖<br><code>npm install hexo-deployer-git --save</code> 安装部署到github的插件</p>
+<h2 id="hexo-命令"><a href="#hexo-命令" class="headerlink" title="hexo 命令"></a>hexo 命令</h2><p><code>hexo -v</code> 查看hexo版本<br><code>hexo init my-blog</code> 初始化创建项目，‘my-blog’ 随意写<br><code>hexo s</code> 本地运行预发布环境<br><code>hexo d -g</code> 远程部署到仓库<br><code>hexo new &lt;title&gt;</code> 创建新文章，&lt;title&gt; 替换为文章标题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" data-id="ckco638z50000jwnidk1k583t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo-写文章-写作篇" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/" class="article-date">
@@ -80,7 +124,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a>
   </div>
 
   </div>
@@ -100,7 +144,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>框架搭建完成了。接下来开始在hexo个人博客中写第一篇文章</p>
-<h1 id="2-创建新页面"><a href="#2-创建新页面" class="headerlink" title="2. 创建新页面"></a>2. 创建新页面</h1><p><code>hexo new &lt;title&gt;</code> title 改为文章标题<br><img src="https://upload-images.jianshu.io/upload_images/17173792-3538cf9c03c4fabe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建新页面"></p>
+<h1 id="2-创建新页面"><a href="#2-创建新页面" class="headerlink" title="2. 创建新页面"></a>2. 创建新页面</h1><p><code>hexo new &lt;title&gt;</code> &lt;title&gt; 改为文章标题<br><img src="https://upload-images.jianshu.io/upload_images/17173792-3538cf9c03c4fabe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建新页面"></p>
 <p>可以看到 <em>/source/_posts/</em> 目录下多了一个对应标题的md文件。在这个文件中就可以使用markdown语法进行编写了。</p>
 <h1 id="3-将新页面更新到仓库"><a href="#3-将新页面更新到仓库" class="headerlink" title="3. 将新页面更新到仓库"></a>3. 将新页面更新到仓库</h1><p>执行 <code>hexo d -g</code> 往远程仓库更新一下博客站点<br>执行完毕后，刷新博客站点，可以看到新的文章出现了。<br><img src="https://upload-images.jianshu.io/upload_images/17173792-4df3854b3ee5eaee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更新文章到博客站点"></p>
 
@@ -126,7 +170,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a>
   </div>
 
   </div>
@@ -252,7 +296,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -292,6 +336,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/">hexo-命令</a>
+          </li>
         
           <li>
             <a href="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/">hexo-写文章(写作篇)</a>
