@@ -96,25 +96,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的第一篇博文<a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" title="hexo-尝试使用（初始化、部署篇）">hexo-尝试使用（初始化、部署篇）</a>是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考<a href="https://blog.csdn.net/xia296/article/details/85246761" target="_blank" rel="noopener">【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法</a>。但为了学习hexo，本文使用图片放到本站的方法。</p>
-<hr>
-<h1 id="官方方案-参考Hexo-资源文件夹"><a href="#官方方案-参考Hexo-资源文件夹" class="headerlink" title="官方方案 参考Hexo-资源文件夹"></a>官方方案 参考<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">Hexo-资源文件夹</a></h1><h2 id="一-最简单的实现"><a href="#一-最简单的实现" class="headerlink" title="一. 最简单的实现"></a>一. 最简单的实现</h2><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code> 的方法访问它们。</p>
-<h2 id="二-想要有规律的使用静态资源"><a href="#二-想要有规律的使用静态资源" class="headerlink" title="二. 想要有规律的使用静态资源"></a>二. 想要有规律的使用静态资源</h2><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"><span class="function">post_asset_folder: <span class="title">true</span></span></span><br></pre></td></tr></table></figure>
-<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。</p>
-<h2 id="三-相对路径引用"><a href="#三-相对路径引用" class="headerlink" title="三. 相对路径引用"></a>三. 相对路径引用</h2><p>当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 <img src="/example.jpg" alt=""> ，它将 不会 出现在首页上。（但是它会在文章中按你期待的方式工作）</p>
-<p>正确的引用图片方式是使用下列的<a href="https://hexo.io/zh-cn/docs/tag-plugins" target="_blank" rel="noopener">标签插件</a>而不是 markdown ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四-注意："><a href="#四-注意：" class="headerlink" title="四. 注意："></a>四. 注意：</h2><p><em>1. 本地调试时，添加完新图片时，可能需要先执行下hexo generate。才能在/public目录下生成图片</em></p>
-<hr>
-<h1 id="我的方案"><a href="#我的方案" class="headerlink" title="我的方案"></a>我的方案</h1><p>结合上面的第二种方案 + 图片绝对路径。<br><br>当执行hexo generate时，命令行中会把新添加的图片处理后的绝对路径展示出来，如下面的<code>INFO  Generated: 2020/07/08/hexo-写文章-写作篇/01.webp</code></p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INFO  <span class="built_in">Start</span> processing</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> <span class="number">174</span> ms</span><br><span class="line">INFO  Generated: <span class="number">2020</span>/<span class="number">07</span>/<span class="number">08</span>/hexo-写文章-写作篇/<span class="number">01</span>.webp</span><br><span class="line">INFO  <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">116</span> ms</span><br></pre></td></tr></table></figure>
-<p>在md中用<code>![创建新页面](/2020/07/08/hexo-写文章-写作篇/01.webp)</code> 这种md语法来引入。就能在文章详情页和首页都能看到图片了。<em>图片路径记得 <code>/</code> 开头</em></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">分享</a>
       
       
     </footer>
@@ -150,13 +141,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="hexo-使用到的命令整理"><a href="#hexo-使用到的命令整理" class="headerlink" title="hexo 使用到的命令整理"></a>hexo 使用到的命令整理</h1><h2 id="npm-命令整理"><a href="#npm-命令整理" class="headerlink" title="npm 命令整理"></a>npm 命令整理</h2><p><code>npm install hexo-cli -g</code> 安装/更新 hexo<br><code>npm i</code> 创建完项目后安装依赖<br><code>npm install hexo-deployer-git --save</code> 安装部署到github的插件</p>
-<h2 id="hexo-命令"><a href="#hexo-命令" class="headerlink" title="hexo 命令"></a>hexo 命令</h2><p><code>hexo -v</code> 查看hexo版本<br><code>hexo init my-blog</code> 初始化创建项目，‘my-blog’ 随意写<br><code>hexo s</code> 本地运行预发布环境<br><code>hexo d -g</code> 远程部署到仓库<br><code>hexo new &lt;title&gt;</code> 创建新文章，&lt;title&gt; 替换为文章标题</p>
-
+        <h1 id="hexo-使用到的命令整理"><a href="#hexo-使用到的命令整理" class="headerlink" title="hexo 使用到的命令整理"></a>hexo 使用到的命令整理</h1>
+        
+          <p class="article-more-link">
+            <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" data-id="ckcofqlhq00051wnic8keefzc" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/" data-id="ckcofqlhq00051wnic8keefzc" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -195,14 +190,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>框架搭建完成了。接下来开始在hexo个人博客中写第一篇文章</p>
-<h1 id="2-创建新页面"><a href="#2-创建新页面" class="headerlink" title="2. 创建新页面"></a>2. 创建新页面</h1><p><code>hexo new &lt;title&gt;</code> &lt;title&gt; 改为文章标题<br><img src="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/01.webp" alt="创建新页面"></p>
-<p>可以看到 <em>/source/_posts/</em> 目录下多了一个对应标题的md文件。在这个文件中就可以使用markdown语法进行编写了。</p>
-<h1 id="3-将新页面更新到仓库"><a href="#3-将新页面更新到仓库" class="headerlink" title="3. 将新页面更新到仓库"></a>3. 将新页面更新到仓库</h1><p>执行 <code>hexo d -g</code> 往远程仓库更新一下博客站点<br>执行完毕后，刷新博客站点，可以看到新的文章出现了。<br><img src="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/02.webp" alt="更新文章到博客站点"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/" data-id="ckcofqlhj00011wni9ecse6mc" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/" data-id="ckcofqlhj00011wni9ecse6mc" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -241,42 +238,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>突然想整一个个人博客试试。在网上看到说hexo好上手，并且很久以前发自己往电脑上装过hexo，所以就拿这个试试。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>因为电脑上已经有了，就不写怎么安装了。就是node+npm</p>
-<h1 id="更新hexo"><a href="#更新hexo" class="headerlink" title="更新hexo"></a>更新hexo</h1><p>首先面临的问题，就是升级hexo。毕竟是两年前安装的版本，还是先升级到最新的好。</p>
-<ol>
-<li><p>查看现有版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">PS D:\hexo&gt; hexo -v</span><br><span class="line">hexo-cli: 1.0.3</span><br><span class="line">os: Windows_NT 10.0.18362 win32 x64</span><br><span class="line">node: 14.4.0</span><br><span class="line">v8: 8.1.307.31-node.33</span><br><span class="line">uv: 1.37.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.7</span><br><span class="line">ares: 1.16.0</span><br><span class="line">modules: 83</span><br><span class="line">nghttp2: 1.41.0</span><br><span class="line">napi: 6</span><br><span class="line">llhttp: 2.0.4</span><br><span class="line">openssl: 1.1.1g</span><br><span class="line">cldr: 37.0</span><br><span class="line">icu: 67.1</span><br><span class="line">tz: 2019c</span><br><span class="line">unicode: 13.0</span><br></pre></td></tr></table></figure>
-<p>可以看到是比较老的版本了。目前的最新版本已经是3.1.0了。更新！</p>
-</li>
-<li><p>更新<br>重新安装就是更新，在任意目录执行 <code>npm install hexo-cli -g</code><br>结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PS D:\hexo&gt; npm install hexo-cli -g</span><br><span class="line">D:\nodejs\npmglobal\hexo -&gt; D:\nodejs\npmglobal\node_modules\hexo-cli\bin\hexo</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.3 (node_modules\hexo-cli\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;&#125; (current: &#123;&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo-cli@3.1.0</span><br><span class="line">added 31 packages from 16 contributors, removed 54 packages and updated 38 packages in 27.984s</span><br></pre></td></tr></table></figure>
-<p>接下来就放心大胆的使用了。</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1></li>
-<li><p>新建个目录，并在目录下初始化项目<code>hexo init my-blog</code>。初始化比较慢，可能是因为要从github克隆代码的原因……</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">PS D:\hexo&gt; hexo init my-blog</span><br><span class="line">INFO  Cloning hexo-starter https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo-starter.git</span><br><span class="line">Cloning into &#39;D:\hexo\my-blog&#39;...</span><br><span class="line">remote: Enumerating objects: 3, done.</span><br><span class="line">remote: Counting objects: 100% (3&#x2F;3), done.</span><br><span class="line">remote: Compressing objects: 100% (3&#x2F;3), done.</span><br><span class="line">remote: Total 168 (delta 0), reused 0 (delta 0), pack-reused 165                                                        Receiving objects:  39% (66&#x2F;168), 28.01 KiB | 4.00 KiB&#x2F;s</span><br><span class="line">Receiving objects: 100% (168&#x2F;168), 32.45 KiB | 6.00 KiB&#x2F;s, done.</span><br><span class="line">Resolving deltas: 100% (79&#x2F;79), done.</span><br><span class="line">Submodule &#39;themes&#x2F;landscape&#39; (https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo-theme-landscape.git) registered for path &#39;themes&#x2F;landscape&#39;</span><br><span class="line">Cloning into &#39;D:&#x2F;hexo&#x2F;my-blog&#x2F;themes&#x2F;landscape&#39;...</span><br><span class="line">remote: Enumerating objects: 8, done.</span><br><span class="line">remote: Counting objects: 100% (8&#x2F;8), done.</span><br><span class="line">remote: Compressing objects: 100% (6&#x2F;6), done.</span><br><span class="line">remote: Total 1071 (delta 1), reused 5 (delta 1), pack-reused 1063</span><br><span class="line">Receiving objects: 100% (1071&#x2F;1071), 3.22 MiB | 10.00 KiB&#x2F;s, done.</span><br><span class="line">Resolving deltas: 100% (586&#x2F;586), done.</span><br><span class="line">Submodule path &#39;themes&#x2F;landscape&#39;: checked out &#39;73a23c51f8487cfcd7c6deec96ccc7543960d350&#39;</span><br><span class="line">[32mINFO [39m Install dependencies</span><br><span class="line"></span><br><span class="line">&gt; ejs@2.7.4 postinstall D:\hexo\my-blog\node_modules\ejs</span><br><span class="line">&gt; node .&#x2F;postinstall.js</span><br><span class="line"></span><br><span class="line">Thank you for installing EJS: built with the Jake JavaScript build tool (https:&#x2F;&#x2F;jakejs.com&#x2F;)</span><br><span class="line"></span><br><span class="line">npm notice created a lockfile as package-lock.json. You should commit this file.</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;&#125; (current: &#123;&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;&#125;)</span><br><span class="line"></span><br><span class="line">added 252 packages from 448 contributors in 50.328s</span><br><span class="line"></span><br><span class="line">5 packages are looking for funding</span><br><span class="line">  run &#96;npm fund&#96; for details</span><br><span class="line"></span><br><span class="line">INFO  Start blogging with Hexo!</span><br></pre></td></tr></table></figure></li>
-<li><p>安装依赖。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd my-blog</span><br><span class="line">npm i</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PS D:\hexo&gt; cd .\my-blog\</span><br><span class="line">PS D:\hexo\my-blog&gt; npm i</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;&#125; (current: &#123;&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;&#125;)</span><br><span class="line"></span><br><span class="line">up to date in 4.23s</span><br><span class="line"></span><br><span class="line">5 packages are looking for funding</span><br><span class="line">  run &#96;npm fund&#96; for details</span><br></pre></td></tr></table></figure>
-<p>初始化完成~</p>
-</li>
-<li><p>运行本地环境<code>hexo s</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PS D:\hexo\my-blog&gt; hexo s</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(Use &#96;node --trace-warnings ...&#96; to show where the warning was created)</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:4152) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-<p>在浏览器中打开本地地址：<a href="http://localhost:4000。就成功看到了默认的博客了！">http://localhost:4000。就成功看到了默认的博客了！</a></p>
-</li>
-</ol>
-<h1 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h1><p>github 有基于仓库生成静态网站的功能。</p>
-<ol>
-<li>创建仓库 获取网址<br><img src="https://upload-images.jianshu.io/upload_images/17173792-b875c25b62eff03d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建.PNG"><br>创建时要注意：<br>仓库名有固定格式：<strong>账户名.github.io</strong>。<strong>Initialize this repository with a README要勾选上</strong>。<br>创建成功后，在仓库设置中有一个GitHub Pages设置，展示出来了一个链接，这个链接就是能够访问仓库中的网站的网址了。<br><img src="https://upload-images.jianshu.io/upload_images/17173792-75e2a101300c41d4.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看网址.PNG"></li>
-<li>配置Deployment<br>在博客项目的根目录有个_config.yml配置文件，修改里面的deploy配置，如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Jarod-Xie&#x2F;Jarod-Xie.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
-<li>安装github部署插件<br>部署到git需要<code>hexo-deployer-git</code>这个插件。在根目录执行：<code>npm install hexo-deployer-git --save</code></li>
-<li>部署至仓库<br>执行远程部署命令<code>hexo d -g</code>, 执行完毕后，打开 <strong>1. 创建仓库 获取网址</strong> 这一步中拿到的网址，就能看到博客部署成功了。<br><img src="https://upload-images.jianshu.io/upload_images/17173792-15ffcff3f665f03e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="默认博客"></li>
-</ol>
-<h1 id="回顾一下命令"><a href="#回顾一下命令" class="headerlink" title="回顾一下命令"></a>回顾一下命令</h1><p><code>hexo -v</code> 查看hexo版本<br><code>npm install hexo-cli -g</code> 安装/更新 hexo<br><code>hexo init my-blog</code> 初始化创建项目，‘my-blog’ 随意写<br><code>npm i</code> 创建完项目后安装依赖<br><code>hexo s</code> 本地运行预发布环境<br><code>npm install hexo-deployer-git --save</code> 安装部署到github的插件<br><code>hexo d -g</code> 远程部署到仓库</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" data-id="ckcofqlhs00061wni0p53473r" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" data-id="ckcofqlhs00061wni0p53473r" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
@@ -311,23 +282,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/08/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/hello-world/" data-id="ckcofqlhc00001wnic2x5088a" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/08/hello-world/" data-id="ckcofqlhc00001wnic2x5088a" class="article-share-link">分享</a>
       
       
     </footer>
@@ -347,7 +311,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -357,7 +321,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -376,7 +340,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -422,6 +386,8 @@
     <div id="footer-info" class="inner">
       &copy; 2020 Jarod Xie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">本站总访客数<span id="busuanzi_value_site_uv"></span>人</span>
     </div>
   </div>
 </footer>
@@ -436,6 +402,8 @@
     
 
 <script src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<!-- 不蒜子 统计访客插件  http://busuanzi.ibruce.info/-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
   

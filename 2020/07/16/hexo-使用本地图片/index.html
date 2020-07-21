@@ -7,16 +7,16 @@
   
   <title>hexo-使用本地图片 | Jarod-Xie的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。  官方方案 参考Hexo-资源文件夹一. 最简单的实现资源（As">
+  <meta name="description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo-使用本地图片">
 <meta property="og:url" content="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/index.html">
 <meta property="og:site_name" content="Jarod-Xie的博客">
-<meta property="og:description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。  官方方案 参考Hexo-资源文件夹一. 最简单的实现资源（As">
+<meta property="og:description" content="前言我的第一篇博文hexo-尝试使用（初始化、部署篇）是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法。但为了学习hexo，本文使用图片放到本站的方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/example.jpg">
 <meta property="article:published_time" content="2020-07-16T02:25:38.000Z">
-<meta property="article:modified_time" content="2020-07-16T06:50:39.996Z">
+<meta property="article:modified_time" content="2020-07-21T08:25:59.507Z">
 <meta property="article:author" content="Jarod Xie">
 <meta property="article:tag" content="程序">
 <meta property="article:tag" content="前端">
@@ -98,6 +98,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的第一篇博文<a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/" title="hexo-尝试使用（初始化、部署篇）">hexo-尝试使用（初始化、部署篇）</a>是先发布到简书上再转过来hexo的，其中的图片是在简书服务器上的，转过来发现，在个人网站打不开图片报403。应该是简书做了图片防盗链，其实网上有方法避开防盗链，参考<a href="https://blog.csdn.net/xia296/article/details/85246761" target="_blank" rel="noopener">【建站教程】网站引用三方图片遇到简单防盗链referer的处理办法</a>。但为了学习hexo，本文使用图片放到本站的方法。</p>
+<a id="more"></a>
+
 <hr>
 <h1 id="官方方案-参考Hexo-资源文件夹"><a href="#官方方案-参考Hexo-资源文件夹" class="headerlink" title="官方方案 参考Hexo-资源文件夹"></a>官方方案 参考<a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">Hexo-资源文件夹</a></h1><h2 id="一-最简单的实现"><a href="#一-最简单的实现" class="headerlink" title="一. 最简单的实现"></a>一. 最简单的实现</h2><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code> 的方法访问它们。</p>
 <h2 id="二-想要有规律的使用静态资源"><a href="#二-想要有规律的使用静态资源" class="headerlink" title="二. 想要有规律的使用静态资源"></a>二. 想要有规律的使用静态资源</h2><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
@@ -116,7 +118,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">Share</a>
+      <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      <a data-url="http://yoursite.com/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-id="ckcofqlhl00021wni0io4567d" class="article-share-link">分享</a>
       
       
     </footer>
@@ -144,7 +147,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -154,7 +157,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -173,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -219,6 +222,8 @@
     <div id="footer-info" class="inner">
       &copy; 2020 Jarod Xie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">本站总访客数<span id="busuanzi_value_site_uv"></span>人</span>
     </div>
   </div>
 </footer>
@@ -233,6 +238,8 @@
     
 
 <script src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<!-- 不蒜子 统计访客插件  http://busuanzi.ibruce.info/-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
   
