@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>npm 发包初体验 | Jarod-Xie的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言为了更好的理解npm，第一次尝试发布npm包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm 发包初体验">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/npm-%E5%8F%91%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Jarod-Xie的博客">
+<meta property="og:description" content="前言为了更好的理解npm，第一次尝试发布npm包">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-23T07:19:25.000Z">
+<meta property="article:modified_time" content="2020-07-23T08:44:35.334Z">
+<meta property="article:author" content="Jarod Xie">
+<meta property="article:tag" content="npm">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jarod-Xie的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jarod-Xie的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">随便写写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-npm-发包初体验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/23/npm-%E5%8F%91%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/" class="article-date">
+  <time datetime="2020-07-23T07:19:25.000Z" itemprop="datePublished">2020-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/js/">js</a>►<a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F/js/npm/">npm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      npm 发包初体验
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为了更好的理解npm，第一次尝试发布npm包</p>
+<a id="more"></a>
+
+<h1 id="发包流程"><a href="#发包流程" class="headerlink" title="发包流程"></a>发包流程</h1><h2 id="一-准备npm账号"><a href="#一-准备npm账号" class="headerlink" title="一. 准备npm账号"></a>一. 准备<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm</a>账号</h2><p>新账号要记得验证后才能publish发包。</p>
+<h2 id="二-创建并初始化项目"><a href="#二-创建并初始化项目" class="headerlink" title="二. 创建并初始化项目"></a>二. 创建并初始化项目</h2><ol>
+<li>创建项目目录：如：tool-pratice</li>
+<li>进入目录 <code>cd tool-pratice</code></li>
+<li>执行npm init 初始化项目，一直回车就可以。<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm init</span><br><span class="line">This utility will walk you through creating a package.json file.</span><br><span class="line">It only covers the most common items, and tries to guess sensible defaults.</span><br><span class="line"></span><br><span class="line">See `npm help init` <span class="keyword">for</span> definitive documentation on these fields</span><br><span class="line">and exactly what they do.</span><br><span class="line"></span><br><span class="line">Use `npm install &lt;pkg&gt;` afterwards to install a package and</span><br><span class="line">save it as a dependency <span class="keyword">in</span> the package.json file.</span><br><span class="line"></span><br><span class="line">Press ^C at any time to quit.</span><br><span class="line">package name: (tool<span class="literal">-pratice</span>)</span><br><span class="line">version: (<span class="number">1.0</span>.<span class="number">0</span>)</span><br><span class="line">description:</span><br><span class="line">entry point: (index.js)</span><br><span class="line">test command:</span><br><span class="line">git repository:</span><br><span class="line">keywords:</span><br><span class="line">author:</span><br><span class="line">license: (ISC)</span><br><span class="line">About to write to E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>\package.json:</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"tool-pratice"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"</span>Error: no test specified\<span class="string">" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Is this OK? (yes)</span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>默认字段简介：  <ul>
+<li>name：发布的包名，默认是上级文件夹名。不得与现在npm中的包名重复。包名不能有大写字母/空格/下滑线!  </li>
+<li>version：包的版本，默认是1.0.0。对于npm包的版本号有着一系列的规则，模块的版本号采用X.Y.Z的格式，具体体现为：  <ul>
+<li><ol>
+<li>修复bug，小改动，增加z。  </li>
+</ol>
+</li>
+<li><ol start="2">
+<li>增加新特性，可向后兼容，增加y  </li>
+</ol>
+</li>
+<li><ol start="3">
+<li>有很大的改动，无法向下兼容,增加x  </li>
+</ol>
+</li>
+</ul>
+</li>
+<li>description：项目简介  </li>
+<li>mian：入口文件，默认是Index.js，可以修改成自己的文件   </li>
+<li>scripts：包含各种脚本执行命令  </li>
+<li>test：测试命令。  </li>
+<li>author：写自己的账号名  </li>
+<li>license：这个直接回车，开源文件协议吧，也可以是MIT，看需要。  </li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li><p>在根目录创建 <code>index.js</code>，写点内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`我的npm包的入口文件`</span>)</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在本机添加npm 账号</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm adduser</span><br><span class="line">Username: **********</span><br><span class="line">Password:</span><br><span class="line">Password:</span><br><span class="line">Email: (this IS public) ******</span><br><span class="line">Logged <span class="keyword">in</span> as ***** on https://registry.npm.taobao.org/.</span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>npm publish 发包</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm publish                                                                     npm notice</span><br><span class="line">npm notice package: tool<span class="literal">-pratice</span>@<span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice === Tarball Contents ===</span><br><span class="line">npm notice <span class="number">63</span>B  index.js</span><br><span class="line">npm notice <span class="number">208</span>B package.json</span><br><span class="line">npm notice === Tarball Details ===</span><br><span class="line">npm notice name:          tool<span class="literal">-pratice</span></span><br><span class="line">npm notice version:       <span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice package size:  <span class="number">349</span> B</span><br><span class="line">npm notice unpacked size: <span class="number">271</span> B</span><br><span class="line">npm notice shasum:        <span class="number">5083</span>fa312c39f194cd7d5e4e0cd4072e3a9e6451</span><br><span class="line">npm notice integrity:     sha512<span class="literal">-4PCoJu8mHqUw</span>+[<span class="type">...</span>]NrWgw4TZn0pZQ==</span><br><span class="line">npm notice total files:   <span class="number">2</span></span><br><span class="line">npm notice</span><br><span class="line">npm ERR! code E403</span><br><span class="line">npm ERR! <span class="number">403</span> <span class="number">403</span> Forbidden - PUT https://registry.npm.taobao.org/tool<span class="literal">-pratice</span> - [<span class="type">no_perms</span>] Private mode enable, only admin can publish this module</span><br><span class="line">npm ERR! <span class="number">403</span> <span class="keyword">In</span> most cases, you or one of your dependencies are requesting</span><br><span class="line">npm ERR! <span class="number">403</span> a package version that is forbidden by your security policy.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     D:\nodejs\npmcache\_logs\<span class="number">2020</span><span class="literal">-07</span><span class="literal">-23T08_01_12_463Z</span><span class="literal">-debug</span>.log</span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>额，第一次发包失败。网上搜了下，参考这个<a href="https://blog.csdn.net/weixin_38080573/article/details/88080556" target="_blank" rel="noopener">发布npm包报错: 403 Forbidden - PUT https://registry.npm.taobao.org/extract - no_perms</a>处理一下。</p>
+</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm publish</span><br><span class="line">npm notice</span><br><span class="line">npm notice package: tool<span class="literal">-pratice</span>@<span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice === Tarball Contents ===</span><br><span class="line">npm notice <span class="number">63</span>B  index.js</span><br><span class="line">npm notice <span class="number">208</span>B package.json</span><br><span class="line">npm notice === Tarball Details ===</span><br><span class="line">npm notice name:          tool<span class="literal">-pratice</span></span><br><span class="line">npm notice version:       <span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice package size:  <span class="number">349</span> B</span><br><span class="line">npm notice unpacked size: <span class="number">271</span> B</span><br><span class="line">npm notice shasum:        <span class="number">5083</span>fa312c39f194cd7d5e4e0cd4072e3a9e6451</span><br><span class="line">npm notice integrity:     sha512<span class="literal">-4PCoJu8mHqUw</span>+[<span class="type">...</span>]NrWgw4TZn0pZQ==</span><br><span class="line">npm notice total files:   <span class="number">2</span></span><br><span class="line">npm notice</span><br><span class="line">+ tool<span class="literal">-pratice</span>@<span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>终于完成推送。去<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm</a> 已经可以查找到这个包了。</p>
+<p>整个过程参考了:  </p>
+<ul>
+<li><a href="https://www.jianshu.com/p/7bba18925fbf" target="_blank" rel="noopener">一分钟教你发布npm包</a>  </li>
+<li><a href="https://blog.csdn.net/weixin_38080573/article/details/88080556" target="_blank" rel="noopener">发布npm包报错: 403 Forbidden - PUT https://registry.npm.taobao.org/extract - no_perms</a></li>
+</ul>
+<h1 id="错误汇总"><a href="#错误汇总" class="headerlink" title="错误汇总"></a>错误汇总</h1><h2 id="需要验证邮箱"><a href="#需要验证邮箱" class="headerlink" title="需要验证邮箱"></a>需要验证邮箱</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm publish</span><br><span class="line">npm notice</span><br><span class="line">npm notice package: tool<span class="literal">-pratice</span>@<span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice === Tarball Contents ===</span><br><span class="line">npm notice <span class="number">63</span>B  index.js</span><br><span class="line">npm notice <span class="number">208</span>B package.json</span><br><span class="line">npm notice === Tarball Details ===</span><br><span class="line">npm notice name:          tool<span class="literal">-pratice</span></span><br><span class="line">npm notice version:       <span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">npm notice package size:  <span class="number">349</span> B</span><br><span class="line">npm notice unpacked size: <span class="number">271</span> B</span><br><span class="line">npm notice shasum:        <span class="number">5083</span>fa312c39f194cd7d5e4e0cd4072e3a9e6451</span><br><span class="line">npm notice integrity:     sha512<span class="literal">-4PCoJu8mHqUw</span>+[<span class="type">...</span>]NrWgw4TZn0pZQ==</span><br><span class="line">npm notice total files:   <span class="number">2</span></span><br><span class="line">npm notice</span><br><span class="line">npm ERR! code E403</span><br><span class="line">npm ERR! <span class="number">403</span> <span class="number">403</span> Forbidden - PUT http://registry.npmjs.org/tool<span class="literal">-pratice</span> - you must verify your email before publishing a new package: https://www.npmjs.com/email<span class="literal">-edit</span></span><br><span class="line">npm ERR! <span class="number">403</span> <span class="keyword">In</span> most cases, you or one of your dependencies are requesting</span><br><span class="line">npm ERR! <span class="number">403</span> a package version that is forbidden by your security policy.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     D:\nodejs\npmcache\_logs\<span class="number">2020</span><span class="literal">-07</span><span class="literal">-23T08_23_14_129Z</span><span class="literal">-debug</span>.log</span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm publish</span><br></pre></td></tr></table></figure>
+
+<h2 id="这个是从淘宝镜像源-切到-官方镜像源后，执行npm-login遇到的。"><a href="#这个是从淘宝镜像源-切到-官方镜像源后，执行npm-login遇到的。" class="headerlink" title="这个是从淘宝镜像源 切到 官方镜像源后，执行npm login遇到的。"></a>这个是从淘宝镜像源 切到 官方镜像源后，执行npm login遇到的。</h2><p>我先npm adduser 成功， 然后 npm login 就可以了。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm login</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://registry.npmjs.org/-/v1/login failed, reason: connect ETIMEDOUT <span class="number">104.16</span>.<span class="number">23.35</span>:<span class="number">80</span></span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network <span class="keyword">In</span> most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network <span class="keyword">If</span> you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network <span class="string">'proxy'</span> config is set properly.  See: <span class="string">'npm help config'</span></span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     D:\nodejs\npmcache\_logs\<span class="number">2020</span><span class="literal">-07</span><span class="literal">-23T08_18_35_594Z</span><span class="literal">-debug</span>.log</span><br><span class="line">PS E:\develop\npm<span class="literal">-pacages</span>\tool<span class="literal">-pratice</span>&gt; npm adduser</span><br></pre></td></tr></table></figure>
+        <span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/23/npm-%E5%8F%91%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/" data-id="ckcygui9m0000ewni10f6ai4l" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo-使用本地图片</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/">程序</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/js/">js</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F/js/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 20px;">博客搭建</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/23/npm-%E5%8F%91%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/">npm 发包初体验</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">hexo-使用本地图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/16/hexo-%E5%91%BD%E4%BB%A4/">hexo-命令</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/hexo-%E5%86%99%E6%96%87%E7%AB%A0-%E5%86%99%E4%BD%9C%E7%AF%87/">hexo-写文章(写作篇)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/hexo-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%81%E9%83%A8%E7%BD%B2%E7%AF%87%EF%BC%89/">hexo-尝试使用（初始化、部署篇）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jarod Xie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      <span id="busuanzi_container_site_uv">本站总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<!-- 不蒜子 统计访客插件  http://busuanzi.ibruce.info/-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
